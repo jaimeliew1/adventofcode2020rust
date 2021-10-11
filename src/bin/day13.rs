@@ -53,6 +53,8 @@ fn part2((_, buses): &(u32, Vec<String>)) -> u64 {
     offset
 }
 fn main() {
+    let now = std::time::Instant::now();
+    
     let data = parse_input("input/input13.txt");
 
     let ans_part1 = part1(&data);
@@ -60,4 +62,7 @@ fn main() {
 
     let ans_part2 = part2(&data);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

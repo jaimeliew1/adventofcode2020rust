@@ -27,6 +27,8 @@ fn part2(datavec: &Vec<Vec<char>>) -> u32 {
     a * b * c * d * e
 }
 fn main() {
+    let now = std::time::Instant::now();
+    
     let contents = fs::read_to_string("input/input03.txt").expect("can't find file");
     let datavec: Vec<Vec<char>> = contents.lines().map(|s| s.chars().collect()).collect();
 
@@ -35,4 +37,7 @@ fn main() {
 
     let ans_part2 = part2(&datavec);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

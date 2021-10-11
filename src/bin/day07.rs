@@ -53,6 +53,8 @@ fn part2(bagdict: &HashMap<String, Vec<(String, u32)>>) -> u32 {
     count_bags(&String::from("shiny gold"), &bagdict)
 }
 fn main() {
+    let now = std::time::Instant::now();
+    
     let bagdict = parse_input("input/input07.txt");
 
     let ans_part1 = part1(&bagdict);
@@ -60,4 +62,7 @@ fn main() {
 
     let ans_part2 = part2(&bagdict);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

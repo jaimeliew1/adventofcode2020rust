@@ -33,6 +33,8 @@ fn part2(lines: &Vec<Vec<char>>) -> u32 {
 }
 
 fn main() {
+    let now = std::time::Instant::now();
+    
     let contents = fs::read_to_string("input/input05.txt").expect("can't find file");
     let lines: Vec<Vec<char>> = contents.lines().map(|s| s.chars().collect()).collect();
 
@@ -41,4 +43,7 @@ fn main() {
 
     let ans_part2 = part2(&lines);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

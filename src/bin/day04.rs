@@ -32,6 +32,8 @@ fn part2(chunks: &Vec<String>) -> u32 {
 }
 
 fn main() {
+    let now = std::time::Instant::now();
+    
     let contents = fs::read_to_string("input/input04.txt").expect("can't find file");
     // Add a space at the end to make the regex work.
     let chunks: Vec<String> = contents.split("\n\n").map(|s| format!("{} ", s)).collect();
@@ -41,4 +43,7 @@ fn main() {
 
     let ans_part2 = part2(&chunks);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

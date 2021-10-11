@@ -135,6 +135,8 @@ fn neighbours_in_dir((dx, dy): (i32, i32), i: usize, j: usize, layout: &[[State;
 }
 
 fn main() {
+    let now = std::time::Instant::now();
+        
     let layout = parse_input("input/input11.txt");
 
     let ans_part1 = part1(&layout);
@@ -142,4 +144,7 @@ fn main() {
 
     let ans_part2 = part2(&layout);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

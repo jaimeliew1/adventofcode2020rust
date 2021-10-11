@@ -46,6 +46,8 @@ fn part2(datavec: &Vec<Data>) -> u32 {
 }
 
 fn main() {
+    let now = std::time::Instant::now();
+        
     let re = Regex::new(r"(\d+)-(\d+) (\w): (\w+)").unwrap();
     let contents = fs::read_to_string("input/input02.txt").expect("can't find file");
     let datavec: Vec<Data> = contents.lines().map(|s| parse_line(s, &re)).collect();
@@ -55,4 +57,7 @@ fn main() {
 
     let ans_part2 = part2(&datavec);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

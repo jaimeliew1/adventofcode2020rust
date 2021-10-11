@@ -24,6 +24,8 @@ fn part2(inp_vec: &Vec<i32>) -> i32 {
     unreachable!()
 }
 fn main() {
+    let now = std::time::Instant::now();
+    
     let contents = fs::read_to_string("input/input01.txt").expect("can't find file");
     let inp_vec: Vec<i32> = contents
         .lines()
@@ -35,4 +37,7 @@ fn main() {
 
     let ans_part2 = part2(&inp_vec);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

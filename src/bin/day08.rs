@@ -90,6 +90,8 @@ fn part2(commands: &Vec<Op>) -> Option<i32> {
     None
 }
 fn main() {
+    let now = std::time::Instant::now();
+    
     let commands = parse_input("input/input08.txt");
 
     let ans_part1 = part1(&commands);
@@ -97,4 +99,7 @@ fn main() {
 
     let ans_part2 = part2(&commands).unwrap();
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }

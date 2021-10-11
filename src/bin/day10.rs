@@ -61,6 +61,8 @@ fn part2(input: &Vec<u64>) -> u64 {
     ans
 }
 fn main() {
+    let now = std::time::Instant::now();
+    
     let input = parse_input("input/input10.txt");
 
     let ans_part1 = part1(&input);
@@ -68,4 +70,7 @@ fn main() {
 
     let ans_part2 = part2(&input);
     println!("part2: {}", ans_part2);
+    
+    let time = now.elapsed().as_micros();
+    println!("Time: {}ns", time);
 }
