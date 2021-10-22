@@ -1,28 +1,21 @@
 use std::collections::HashMap;
 
-fn simulate(inp_vec: &Vec<u32>, n_max: u32) -> u32 {
-    let mut i = 1;
-    let mut num: u32;
-    let mut last_seen: HashMap<u32, u32> = HashMap::new();
+fn simulate(inp_vec: &Vec<u32>, n_max: usize) -> u32 {
+    let mut last_seen = inp_vec
+        .iter()
+        .enumerate()
+        .map(|(i, v)| (*v, i + 1))
+        .collect::<HashMap<u32, usize>>();
 
-    for val in &inp_vec[0..inp_vec.len() - 1] {
-        last_seen.insert(*val, i);
-        i += 1;
-    }
+    let mut num: u32 = *inp_vec.last().unwrap();
 
-    i += 1;
-    num = *inp_vec.last().unwrap();
-
-    while i <= n_max {
+    for i in inp_vec.len()..n_max {
         if last_seen.contains_key(&num) {
-            let last_i = last_seen[&num];
-            last_seen.insert(num, i - 1);
-            num = i - 1 - last_i;
+            num = (i - last_seen.insert(num, i).unwrap()) as u32;
         } else {
-            last_seen.insert(num, i - 1);
+            last_seen.insert(num, i);
             num = 0;
         }
-        i += 1;
     }
     num
 }
