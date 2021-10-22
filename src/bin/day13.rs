@@ -1,7 +1,6 @@
 use std::fs;
 
 fn parse_input(filename: &str) -> (u32, Vec<String>) {
-    let mut data: Vec<(char, i32)> = Vec::new();
     let contents = fs::read_to_string(filename).expect("can't find file");
     let lines: Vec<&str> = contents.lines().collect();
 
@@ -34,7 +33,7 @@ fn part2((_, buses): &(u32, Vec<String>)) -> u64 {
     let delay_and_bus: Vec<(u64, u64)> = buses
         .iter()
         .enumerate()
-        .filter(|(i, s)| s.as_str() != "x")
+        .filter(|(_i, s)| s.as_str() != "x")
         .map(|(i, s)| (i as u64, s.parse().unwrap()))
         .collect();
     // println!("{:?}", delay_and_bus);

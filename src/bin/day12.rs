@@ -50,7 +50,7 @@ fn part1(data: &Vec<(char, i32)>) -> i32 {
 
 fn turn_clockwise((x, y): (i32, i32), times: usize) -> (i32, i32) {
     let (mut x, mut y) = (x, y);
-    for i in 0..times {
+    for _ in 0..times {
         let (xold, yold) = (x, y);
         x = yold;
         y = -xold;
